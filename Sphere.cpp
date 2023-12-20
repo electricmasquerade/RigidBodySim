@@ -55,11 +55,12 @@ void Sphere::checkCollision(const std::shared_ptr<RigidBody>& other) {
         Vec3 v2 = other_velocity;
 
         if (distance <= collision_dist) {
-            std::cout << "Collision detected!\n";
-            std::cout << "Old velocities: " << m_velocity << " " << other_velocity << "\n";
-            std::cout << "Normal: " << normal << "\n";
+            //debugging print statements
+//            std::cout << "Collision detected!\n";
+//            std::cout << "Old velocities: " << m_velocity << " " << other_velocity << "\n";
+//            std::cout << "Normal: " << normal << "\n";
 
-            //Calculate new velocities
+            //Calculate new velocities, equation is from https://en.wikipedia.org/wiki/Elastic_collision#Two-dimensional_collision_with_two_moving_objects
             Vec3 v1_prime = v1 - ((2 * m2) / (m1 + m2)) * (dot((v1 - v2),normal)) * normal;
             Vec3 v2_prime = v2 - ((2 * m1) / (m1 + m2)) * (dot((v2 - v1),-normal)) * -normal;
 
@@ -67,7 +68,7 @@ void Sphere::checkCollision(const std::shared_ptr<RigidBody>& other) {
             m_velocity = v1_prime;
             other_sphere->setVelocity(v2_prime);
 
-            std::cout << "New velocities: " << m_velocity << " " << other_sphere->getVelocity() << "\n";
+            //std::cout << "New velocities: " << m_velocity << " " << other_sphere->getVelocity() << "\n";
 
             //Set positions so that spheres are no longer colliding
 

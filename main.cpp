@@ -24,8 +24,8 @@ int main() {
 //    world.add(std::make_shared<Sphere>(10, Vec3{200,-750,0}, Position3{width/2,3.5f*height/4, 0}, sf::Color::White));
 
 //randomly generate spheres with random velocities and colors
-    for (int i = 0; i < 100; ++i) {
-        float mass = 1;
+    for (int i = 0; i < 10; ++i) {
+        float mass = 2;
         float x = static_cast<float>(rand() % static_cast<int>(width));
         float y = static_cast<float>(rand() % static_cast<int>(height));
         float z = 0;
